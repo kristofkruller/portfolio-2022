@@ -1,10 +1,15 @@
-import { ThemeProvider } from 'styled-components';
+import {useRef} from "react";
+
+import Home from './sections/Home';
 import './App.css';
-import {useEffect, useState, useRef} from "react";
 import GlobalStyles from './styles/globalStyles';
 import { dark } from './styles/Themes';
+
+import { ThemeProvider } from 'styled-components';
 import { LocomotiveScrollProvider } from 'react-locomotive-scroll';
-import Home from './sections/Home';
+import 'locomotive-scroll/dist/locomotive-scroll.css';
+import { AnimatePresence } from 'framer-motion';
+
 
 function App() {
   const containerRef = useRef(null);
@@ -28,9 +33,11 @@ function App() {
           }
           containerRef={containerRef}
         >
-          <main data-scroll-container ref={containerRef}>
-            <Home />
-          </main>
+          <AnimatePresence>
+            <main data-scroll-container ref={containerRef}>
+              <Home />
+            </main>
+          </AnimatePresence>
         </LocomotiveScrollProvider>
       </ThemeProvider>
     </>
