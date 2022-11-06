@@ -1,9 +1,13 @@
 import {useRef} from "react";
 
 import Home from './sections/Home';
+import Stickies from "./sections/Stickies";
+
 import './App.css';
 import GlobalStyles from './styles/globalStyles';
 import { dark } from './styles/Themes';
+
+import {LandingProvider} from "./components/LandingContext";
 
 import { ThemeProvider } from 'styled-components';
 import { LocomotiveScrollProvider } from 'react-locomotive-scroll';
@@ -12,7 +16,9 @@ import { AnimatePresence } from 'framer-motion';
 
 
 function App() {
+
   const containerRef = useRef(null);
+  const stickyRef = useRef("stickyHeader");
   return (
     <>
       <GlobalStyles />
@@ -34,10 +40,14 @@ function App() {
           containerRef={containerRef}
         >
           <AnimatePresence>
-            <main data-scroll-container ref={containerRef}>
-              <Home />
-            </main>
-          </AnimatePresence>
+            <LandingProvider>
+              <Stickies key={stickyRef}/>
+              <main data-scroll-container ref={containerRef}>
+                <Home />
+              </main>
+            </LandingProvider>
+          </AnimatePresence>            
+
         </LocomotiveScrollProvider>
       </ThemeProvider>
     </>
