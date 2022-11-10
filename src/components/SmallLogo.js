@@ -11,6 +11,7 @@ const SvgWrapper = styled.section`
         stroke-width: 1;
         stroke-linecap: round;
     }
+    transition: all ease-in-out .4s;
 `
 const pathVar = {
     hid:{ pathLength: 0, fillOpacity: 0 },
@@ -24,7 +25,8 @@ const pathVar = {
 const SmallLogo = () => {
   return (
     <SvgWrapper>
-        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 92 115" xmlSpace="preserve">
+        <motion.svg
+        version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 92 115" xmlSpace="preserve">
             <motion.path className="st0 kruboText" 
                 d="M14.3,108l-7.9-8.6H4l8.6-9.6h2.2l-7.9,8.8l-0.2-1.4l10,10.8H14.3z M2.8,108V89.7h1.9V108H2.8z M19.3,    108V89.7
                 h1.9V108H19.3z M30.6,108l-6.2-8.1h2.2L33,108H30.6z M20.4,101.1v-1.7h4.9c0.9,0,1.7-0.2,2.3-0.5c0.6-0.3,1.1-0.8,1.4-1.4
@@ -86,7 +88,7 @@ const SmallLogo = () => {
                     default: { duration: 1.75, ease: "easeInOut" }
                 }}
             />
-        </svg>
+        </motion.svg>
     </SvgWrapper>
   )
 }

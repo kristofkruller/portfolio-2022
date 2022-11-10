@@ -9,7 +9,7 @@ const CoverWrap = styled.section`
     width: 100%;
     height: 100vh;
     background-color: ${props => props.theme.dark};
-    z-index: 2;
+    z-index: 9;
     position: relative;
     display: flex;    justify-content: center;    align-items: center;    flex-direction: column;
     cursor: pointer;
@@ -18,7 +18,7 @@ const hidOnClickVar = {
   hid:{ opacity: 1, scale: 1, borderRadius: 0 },
   show:{ opacity: 0, scale: 2, y:"-100%",
       transition:{
-          default: { duration: 1, ease: "easeInOut" }
+        default: { duration: 1, ease: "easeInOut" }
       },
       transitionEnd: {
         display: "none",
@@ -61,7 +61,7 @@ const hidOnClickVar = {
 // };
 const CoverContainer = () => {
 
-  const { landing, setLandingStatus, destroyCover, setDestroyCover } = useContext(LandingContext);
+  const { landing, setLanding, destroyCover, setDestroyCover } = useContext(LandingContext);
   const coverContent = useRef("coverContent");
 
   useEffect(() => {
@@ -70,11 +70,14 @@ const CoverContainer = () => {
   
   return (
     <>
-      {!destroyCover ? <motion.section ref={coverContent}
-      variants={!landing ? null : hidOnClickVar} initial="hid" animate="show"
+      {!destroyCover ? <motion.section ref={coverContent} 
+      variants={!landing ? null : hidOnClickVar} initial="hid" animate="show" 
       >
-        <CoverWrap onClick={()=>{setLandingStatus()}}>
-          <SmallLogo/>
+        <CoverWrap onClick={()=>{setLanding(true)}}>
+          <motion.div 
+          transition={{ type: 'spring', stiffness: 10, repeat: Infinity }}
+          whileHover={{ opacity: 0 }}
+          ><SmallLogo/></motion.div>
         </CoverWrap>
       </motion.section> : <></>}
     </>

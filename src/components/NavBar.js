@@ -13,6 +13,7 @@ const Hamburger = styled(motion.nav)`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  cursor: pointer;
 
 `
 const HambChild = styled(motion.div)`
