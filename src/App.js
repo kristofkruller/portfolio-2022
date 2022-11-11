@@ -7,7 +7,7 @@ import './App.css';
 import GlobalStyles from './styles/globalStyles';
 import { dark } from './styles/Themes';
 
-import {ContextProvider} from "./components/BoolContext";
+import {BoolContextProvider} from "./components/BoolContext";
 
 import { ThemeProvider } from 'styled-components';
 import { LocomotiveScrollProvider } from 'react-locomotive-scroll';
@@ -39,12 +39,12 @@ function App() {
           containerRef={containerRef}
         >
           <AnimatePresence>
-            <ContextProvider>
+            <BoolContextProvider>
               <Stickies key={stickyRef}/>
               <main data-scroll-container ref={containerRef}>
                 <Home />
               </main>
-            </ContextProvider>
+            </BoolContextProvider>
           </AnimatePresence>            
 
         </LocomotiveScrollProvider>

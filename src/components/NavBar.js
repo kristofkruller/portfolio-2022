@@ -147,9 +147,9 @@ const NavBar = () => {
       <Hamburger id="menu_wrap" variants={yNavFloatVar} initial="hid" animate="show">
 
         <div id="menu_button">
-          <motion.div id="menu_line_one" variants={basicOpacityVar} initial="hid" animate="show" transition={{delay:0.5}} />
-          <motion.div id="menu_line_two" variants={basicOpacityVar} initial="hid" animate="show" transition={{delay:0.75}} />
-          <motion.div id="menu_text_bar" variants={basicOpacityVar} initial="hid" animate="show" transition={{delay:1.25}} />
+          <motion.div id="menu_line_one" variants={basicOpacityVar} initial="hid" animate="show" transition={{delay:1.5}} />
+          <motion.div id="menu_line_two" variants={basicOpacityVar} initial="hid" animate="show" transition={{delay:1.75}} />
+          <motion.div id="menu_text_bar" variants={basicOpacityVar} initial="hid" animate="show" transition={{delay:2.25}} />
         </div>
 
       </Hamburger>

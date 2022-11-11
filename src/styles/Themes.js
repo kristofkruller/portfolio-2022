@@ -15,35 +15,7 @@ export const dark = {
     fontxxxl: '5em',
     fontBig: '10em',
 }
-export const opacityLayerVar = {
-  initial:{
-    opacity: 1,
-    scaleY: 1,
-  },
-  animate:{
-    opacity: 0,
-    scaleY: 0,
-    y: -`${window.innerHeight}`,
 
-    transition:{
-      type:"tween",
-      duration: 2
-    }
-  }
-}
-export const logoVar = {
-    large:{  
-      scale: 1,
-    },
-    normal:{
-      scale: .5,
-      transition:{
-        delay: 1,
-        duration: 2,
-        ease: 'easeInOut'
-      }
-    }
-  }
   export const basicOpacityVar = {
     hid:{opacity:0}, 
     show:{opacity:1}

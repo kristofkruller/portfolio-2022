@@ -42,15 +42,16 @@ const Layer = styled.div`
   width: inherit;
   height: inherit;
   z-index: 2;
-  background: linear-gradient(to top, rgba(22,13,28,1) 15%, rgba(22,13,28,.7)); /*160D1C*/
+  background: linear-gradient(to top, rgba(22,13,28,1) 15%, rgba(22,13,28,.6)); /*160D1C*/
 `
 const Home = () => {
-  const { landing, setLogoViewState } = useBoolContext();
+  const { landing, setLogoViewState, logoViewState } = useBoolContext();
 
   const viewId = useRef("onView");
   const isInView = useInView(viewId);
   useEffect(() => {
     !isInView ? setLogoViewState(true) : setLogoViewState(false)
+    console.log(logoViewState);
   }, [isInView])
 
   return (

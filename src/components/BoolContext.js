@@ -3,7 +3,7 @@ import { useState, createContext, useContext } from 'react';
 
 export const BoolContext = createContext();
 
-export const ContextProvider = ({ children }) => {
+export const BoolContextProvider = ({ children }) => {
 
     const [landing, setLanding] = useState(false);
     const [destroyCover, setDestroyCover] = useState(false);

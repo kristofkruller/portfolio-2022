@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useBoolContext } from '../components/BoolContext'
 
 import { motion } from 'framer-motion'
@@ -24,27 +24,34 @@ const Section = styled(motion.section)`
     z-index: 10;
     overflow: hidden;
     padding: 0 30px;
-    #empty {
-      height: auto;
-      width: 92px;
-    }
 `
-
 
 const Stickies = () => {
   const { landing, logoViewState } = useBoolContext();
+  const motionLogo = useRef("motionLogo");
+  const [display, setDisplay] = useState("none");
 
+  useEffect(() => {
+    if (motionLogo.current.style !== undefined) {
+
+      setTimeout(() => {
+        setDisplay("initial");
+      }, 1000);
+
+    }
+  }, [landing])
+  
   return (
     <>
       { !landing ? <></> :  
       (landing && !logoViewState) ? 
       <Section >      
-        <motion.div initial={{scale:1, opacity: 1}} animate={{scale:0, opacity:0}} transition={{duration:.175}}> <Link to="/"><SmallLogo></SmallLogo></Link></motion.div>
-        <NavBar />
+        <motion.div ref={motionLogo} style={{display:display}} initial={{scale:1, opacity: 1}} animate={{scale:0, opacity:0}} transition={{duration:.175}}><SmallLogo /></motion.div>
+        <section style={{minHeight: "10em", display:display}}><NavBar /></section>
       </Section> : 
       <Section >      
-        <motion.div initial={{scale:0, opacity:0}} animate={{scale:1, opacity: 1}} transition={{duration:.175}}> <Link to="/"><SmallLogo></SmallLogo></Link></motion.div>
-        <NavBar />
+        <motion.div initial={{scale:0, opacity:0}} animate={{scale:1, opacity: 1}} transition={{duration:.175}}> <Link to="/"><SmallLogo /></Link></motion.div>
+        <section style={{minHeight: "10em", display:display}}><NavBar /></section>
       </Section> }
     </>
   )

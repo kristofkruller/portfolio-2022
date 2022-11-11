@@ -65,7 +65,7 @@ const CoverContainer = () => {
   const coverContent = useRef("coverContent");
 
   useEffect(() => {
-    if (landing) setTimeout(() => { coverContent.current.style.display = "none" ? setDestroyCover(true) : setDestroyCover(false) }, 1000); 
+    if (landing) setTimeout(() => { coverContent.current.style.display = "none" ? setDestroyCover(true) : setDestroyCover(false) }, 1000);
   }, [landing])
   
   return (
