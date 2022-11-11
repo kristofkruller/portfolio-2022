@@ -1,5 +1,5 @@
-import React, { useContext, useRef, useEffect } from 'react'
-import { LandingContext } from '../components/LandingContext'
+import React, { useRef, useEffect } from 'react'
+import { useBoolContext } from '../components/BoolContext'
 
 import styled from 'styled-components'
 import CoverContainer from '../components/Cover'
@@ -45,7 +45,7 @@ const Layer = styled.div`
   background: linear-gradient(to top, rgba(22,13,28,1) 15%, rgba(22,13,28,.7)); /*160D1C*/
 `
 const Home = () => {
-  const { landing, setLogoViewState } = useContext(LandingContext);
+  const { landing, setLogoViewState } = useBoolContext();
 
   const viewId = useRef("onView");
   const isInView = useInView(viewId);

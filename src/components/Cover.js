@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import SmallLogo from './SmallLogo';
-import { LandingContext } from './LandingContext';
+import { useBoolContext } from './BoolContext';
 
 
 const CoverWrap = styled.section`
@@ -61,7 +61,7 @@ const hidOnClickVar = {
 // };
 const CoverContainer = () => {
 
-  const { landing, setLanding, destroyCover, setDestroyCover } = useContext(LandingContext);
+  const { landing, setLanding, destroyCover, setDestroyCover } = useBoolContext();
   const coverContent = useRef("coverContent");
 
   useEffect(() => {

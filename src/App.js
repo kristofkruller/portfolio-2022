@@ -7,13 +7,12 @@ import './App.css';
 import GlobalStyles from './styles/globalStyles';
 import { dark } from './styles/Themes';
 
-import {LandingProvider} from "./components/LandingContext";
+import {ContextProvider} from "./components/BoolContext";
 
 import { ThemeProvider } from 'styled-components';
 import { LocomotiveScrollProvider } from 'react-locomotive-scroll';
 import 'locomotive-scroll/dist/locomotive-scroll.css';
 import { AnimatePresence } from 'framer-motion';
-
 
 function App() {
 
@@ -40,12 +39,12 @@ function App() {
           containerRef={containerRef}
         >
           <AnimatePresence>
-            <LandingProvider>
+            <ContextProvider>
               <Stickies key={stickyRef}/>
               <main data-scroll-container ref={containerRef}>
                 <Home />
               </main>
-            </LandingProvider>
+            </ContextProvider>
           </AnimatePresence>            
 
         </LocomotiveScrollProvider>

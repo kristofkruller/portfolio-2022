@@ -1,5 +1,5 @@
-import React, { useContext } from 'react'
-import { LandingContext } from '../components/LandingContext'
+import React from 'react'
+import { useBoolContext } from '../components/BoolContext'
 
 import { motion } from 'framer-motion'
 
@@ -32,18 +32,18 @@ const Section = styled(motion.section)`
 
 
 const Stickies = () => {
-  const { landing, logoViewState } = useContext(LandingContext);
+  const { landing, logoViewState } = useBoolContext();
 
   return (
     <>
       { !landing ? <></> :  
       (landing && !logoViewState) ? 
       <Section >      
-        <div id="empty" />
+        <motion.div initial={{scale:1, opacity: 1}} animate={{scale:0, opacity:0}} transition={{duration:.175}}> <Link to="/"><SmallLogo></SmallLogo></Link></motion.div>
         <NavBar />
       </Section> : 
       <Section >      
-        <Link to="/"><SmallLogo></SmallLogo></Link>
+        <motion.div initial={{scale:0, opacity:0}} animate={{scale:1, opacity: 1}} transition={{duration:.175}}> <Link to="/"><SmallLogo></SmallLogo></Link></motion.div>
         <NavBar />
       </Section> }
     </>
