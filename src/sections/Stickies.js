@@ -22,7 +22,7 @@ const Section = styled(motion.section)`
     justify-content: space-between;
     align-items: center;
     z-index: 10;
-
+    overflow: hidden;
     padding: 0 30px;
     #empty {
       height: auto;
