@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import React from 'react'
 import styled from 'styled-components'
-import { useBoolContext } from './BoolContext'
+import { useStateContext } from './StateContext'
 
 const SvgWrapper = styled.section`
     height: 115px;
@@ -34,7 +34,7 @@ const opacVar = {
 }
 const SmallLogo = () => {
 
-    const { landing } = useBoolContext();
+    const { landing } = useStateContext();
 
     return (
         <SvgWrapper>

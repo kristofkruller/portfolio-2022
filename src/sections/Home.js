@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react'
-import { useBoolContext } from '../components/BoolContext'
+import { useStateContext } from '../components/StateContext'
 
 import styled from 'styled-components'
 import CoverContainer from '../components/Cover'
@@ -45,13 +45,12 @@ const Layer = styled.div`
   background: linear-gradient(to top, rgba(22,13,28,1) 15%, rgba(22,13,28,.6)); /*160D1C*/
 `
 const Home = () => {
-  const { landing, setLogoViewState, logoViewState } = useBoolContext();
+  const { landing, setLogoViewState } = useStateContext();
 
   const viewId = useRef("onView");
   const isInView = useInView(viewId);
   useEffect(() => {
     !isInView ? setLogoViewState(true) : setLogoViewState(false)
-    console.log(logoViewState);
   }, [isInView])
 
   return (

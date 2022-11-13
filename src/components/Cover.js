@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import SmallLogo from './SmallLogo';
-import { useBoolContext } from './BoolContext';
+import { useStateContext } from './StateContext';
 
 
 const CoverWrap = styled.section`
@@ -61,7 +61,7 @@ const hidOnClickVar = {
 // };
 const CoverContainer = () => {
 
-  const { landing, setLanding, destroyCover, setDestroyCover } = useBoolContext();
+  const { landing, setLanding, destroyCover, setDestroyCover } = useStateContext();
   const coverContent = useRef("coverContent");
 
   useEffect(() => {

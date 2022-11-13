@@ -1,7 +1,8 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import styled from 'styled-components'
 import { yNavFloatVar, basicOpacityVar } from '../styles/Themes'
 import { motion } from 'framer-motion';
+import { useStateContext } from './StateContext';
 
 
 const Hamburger = styled(motion.nav)`
@@ -61,25 +62,25 @@ const Hamburger = styled(motion.nav)`
     text-align: center;
   }
 
-  &:hover #menu_line_one {
+  &.closed:hover #menu_line_one {
     left: -100px;
   }
 
-  &:hover #menu_line_two {
+  &.closed:hover #menu_line_two {
     left: 100px;
   }
 
-  &:hover, &:hover #menu_text_bar:before {
+  &.closed:hover, &.closed:hover #menu_text_bar:before {
     animation: 
       shakeWhileMovingUp 0.8s ease 0.2s forwards,
       shakeWhileMovingDown 0.2s ease 0.8s forwards;
   }
-  &:hover {
+  &.closed:hover {
     animation: moveUpThenDownBar 0.8s ease 0.2s forwards;
     cursor: pointer;
 
   }
-  &:hover #menu_text_bar:before {
+  &.closed:hover #menu_text_bar:before {
     animation: moveUpThenDownText 1s ease 0.4s forwards;
   }
 
@@ -137,21 +138,79 @@ const Hamburger = styled(motion.nav)`
       transform: rotateZ(0);
     }
   }
-  
-
-
+  // click event handeling
+  &.opened #menu_line_one {
+    animation: openLeftRot 1s ease 0.2s forwards,
+    openLeftPos 1s ease 0.2s forwards;
+  }
+  &.opened #menu_line_two {
+    animation: openRightRot 1s ease 0.2s forwards,
+    openRightPos 1s ease 0.2s forwards;
+  }
+  @keyframes openLeftRot {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(45deg);
+    }
+  }
+  @keyframes openLeftPos {
+    0% {
+      left: 0px;
+    }
+    100% {
+      left: -12px;
+    }
+  }
+  @keyframes openRightRot {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(-45deg);
+    }
+  }
+  @keyframes openRightPos {
+    0% {
+      left: 0px;
+    }
+    100% {
+      left: 2px;
+    }
+  }
 `
 const NavBar = () => {
+
+  const { navopen, setNavOpen } = useStateContext(); 
+  const [navclass, setNavClass] = useState("closed")
+
+  const classSetter = () => {
+
+    setNavOpen(!navopen);
+    setNavClass("opened");
+
+    if (!navopen) {
+      setNavClass("opened")
+    } else if (navopen) {
+      setNavClass("closed")
+    }
+
+  }
+  
+  useEffect(() => {
+    setNavClass("opened");
+    setNavOpen(!navopen);
+  }, [])
+  
   return (
-
-      <Hamburger id="menu_wrap" variants={yNavFloatVar} initial="hid" animate="show">
-
+      
+      <Hamburger id="menu_wrap" variants={yNavFloatVar} initial="hid" animate="show" className={navclass} onClick={classSetter}>
         <div id="menu_button">
           <motion.div id="menu_line_one" variants={basicOpacityVar} initial="hid" animate="show" transition={{delay:1.5}} />
           <motion.div id="menu_line_two" variants={basicOpacityVar} initial="hid" animate="show" transition={{delay:1.75}} />
           <motion.div id="menu_text_bar" variants={basicOpacityVar} initial="hid" animate="show" transition={{delay:2.25}} />
         </div>
-
       </Hamburger>
       
   )

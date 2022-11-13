@@ -1,5 +1,5 @@
 import React from 'react'
-import { useBoolContext } from './BoolContext'
+import { useStateContext } from './StateContext'
 
 import styled from 'styled-components'
 import {motion } from 'framer-motion'
@@ -32,7 +32,7 @@ const pathVar = {
   }
 }
 const Logo = () => {
-  const { landing, logoViewState } = useBoolContext();
+  const { landing, logoViewState } = useStateContext();
 
   return (
       <>
