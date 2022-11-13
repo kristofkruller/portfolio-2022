@@ -5,11 +5,12 @@ import styled from 'styled-components'
 import CoverContainer from '../components/Cover'
 import Logo from '../components/Logo'
 import kruboVid from '../assets/KRUBO-slow.mp4'
+
 import { motion, useInView } from 'framer-motion'
 
 const Section = styled.section`
   position: relative;
-  min-height: 200vh;
+  height: 100vh;
   overflow: hidden;
   background-color: ${props => props.theme.dark};
   svg *:not(svg rect) {
@@ -21,7 +22,7 @@ const Section = styled.section`
   #viewDiv {
     position: absolute;
     top: 0; right: 0; left: 0; bottom: 0;
-    max-height: 60vh;
+    height: 60vh;
   }
 `
 const VidWrap = styled.div`
@@ -57,10 +58,12 @@ const Home = () => {
     <Section>
       <CoverContainer id='coverSection'/>
       <motion.div id='viewDiv' ref={viewId}><Logo /></motion.div>
-      {landing ? <VidWrap>
-        <Layer />
-        <motion.video src={kruboVid} type='video/mp4' autoPlay muted loop  initial={{opacity:0}} animate={{opacity:1}} transition={{duration:10}} />
-      </VidWrap> : null}
+      { landing ? 
+        <VidWrap>
+          <Layer />
+          <motion.video src={kruboVid} type='video/mp4' autoPlay muted loop  initial={{opacity:0}} animate={{opacity:1}} transition={{duration:10}} />
+        </VidWrap> 
+      : null }
     </Section>
   )
 }

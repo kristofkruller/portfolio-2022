@@ -14,6 +14,7 @@ const Hamburger = styled(motion.nav)`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 10;
 
   #menu_button {
     position: relative;
@@ -60,6 +61,7 @@ const Hamburger = styled(motion.nav)`
     font-weight: medium;
     font-family: "Sora", sans-serif;
     text-align: center;
+    opacity: 1;
   }
 
   &.closed:hover #menu_line_one {
@@ -70,10 +72,9 @@ const Hamburger = styled(motion.nav)`
     left: 100px;
   }
 
-  &.closed:hover, &.closed:hover #menu_text_bar:before {
+  &.closed:hover #menu_text_bar {
     animation: 
-      shakeWhileMovingUp 0.8s ease 0.2s forwards,
-      shakeWhileMovingDown 0.2s ease 0.8s forwards;
+      shakeWhileMovingUp .8s ease 0s forwards;
   }
   &.closed:hover {
     animation: moveUpThenDownBar 0.8s ease 0.2s forwards;
@@ -108,44 +109,34 @@ const Hamburger = styled(motion.nav)`
   }
   @keyframes shakeWhileMovingUp {
     0% {
-      transform: rotateZ(0);
-    }
-    25% {
-      transform: rotateZ(-10deg);
+      transform: scale(1);
     }
     50% {
-      transform: rotateZ(0deg);
-    }
-    75% {
-      transform: rotateZ(10deg);
+      transform: scale(.7);
     }
     100% {
-      transform: rotateZ(0);
+      transform: scale(1);
     }
   }
 
-  @keyframes shakeWhileMovingDown {
-    0% {
-      transform: rotateZ(0);
-    }
-    80% {
-      transform: rotateZ(3deg);
-    }
-    90% {
-      transform: rotateZ(-3deg);
-    }
-    100% {
-      transform: rotateZ(0);
-    }
-  }
   // click event handeling
+  &.opened {
+    cursor: pointer;
+  }
   &.opened #menu_line_one {
-    animation: openLeftRot 1s ease 0.2s forwards,
-    openLeftPos 1s ease 0.2s forwards;
+    left: -100px;
+    animation: openLeftRot .3s ease .5s forwards,
+    openLeftPos .5s ease 0s forwards;
   }
   &.opened #menu_line_two {
-    animation: openRightRot 1s ease 0.2s forwards,
-    openRightPos 1s ease 0.2s forwards;
+    animation: openRightRot .3s ease .5s forwards,
+    openRightPos .5s ease 0s forwards;
+  }
+  &.opened #menu_text_bar {
+    animation: openBotTransform .5s ease 0s forwards;
+  }  
+  &.opened #menu_text_bar::before {
+    content: "";
   }
   @keyframes openLeftRot {
     0% {
@@ -156,8 +147,12 @@ const Hamburger = styled(motion.nav)`
     }
   }
   @keyframes openLeftPos {
+
     0% {
-      left: 0px;
+      left: -100px;
+    }
+    85% {
+      left: -50px;
     }
     100% {
       left: -12px;
@@ -173,10 +168,30 @@ const Hamburger = styled(motion.nav)`
   }
   @keyframes openRightPos {
     0% {
-      left: 0px;
+      left: 100px;
+    }
+    85% {
+      left: 50px;
     }
     100% {
       left: 2px;
+    }
+  }
+  @keyframes openBotTransform {
+    0% {
+      transform: scale(1);
+    } 
+    25% {
+      transform: scale(.8);
+    }
+    40% {
+      transform: scale(.95);
+    }
+    60% {
+      transform: scale(.8);
+    }
+    100% {
+      transform: scale(0);
     }
   }
 `
@@ -199,17 +214,17 @@ const NavBar = () => {
   }
   
   useEffect(() => {
-    setNavClass("opened");
-    setNavOpen(!navopen);
+    setNavClass("closed");
+    setNavOpen(navopen);
   }, [])
   
   return (
       
       <Hamburger id="menu_wrap" variants={yNavFloatVar} initial="hid" animate="show" className={navclass} onClick={classSetter}>
         <div id="menu_button">
-          <motion.div id="menu_line_one" variants={basicOpacityVar} initial="hid" animate="show" transition={{delay:1.5}} />
-          <motion.div id="menu_line_two" variants={basicOpacityVar} initial="hid" animate="show" transition={{delay:1.75}} />
-          <motion.div id="menu_text_bar" variants={basicOpacityVar} initial="hid" animate="show" transition={{delay:2.25}} />
+          <motion.div id="menu_line_one" variants={basicOpacityVar} initial="hid" animate="show" transition={{delay:.75}} />
+          <motion.div id="menu_line_two" variants={basicOpacityVar} initial="hid" animate="show" transition={{delay:1}} />
+          <motion.div id="menu_text_bar" variants={basicOpacityVar} initial="hid" animate="show" transition={{delay:1.25}} />
         </div>
       </Hamburger>
       

@@ -18,7 +18,7 @@ const hidOnClickVar = {
   hid:{ opacity: 1, scale: 1, borderRadius: 0 },
   show:{ opacity: 0, scale: 2, y:"-100%",
       transition:{
-        default: { duration: 1, ease: "easeInOut" }
+        default: { duration: .75, ease: "easeInOut" }
       },
       transitionEnd: {
         display: "none",
@@ -65,7 +65,7 @@ const CoverContainer = () => {
   const coverContent = useRef("coverContent");
 
   useEffect(() => {
-    if (landing) setTimeout(() => { coverContent.current.style.display = "none" ? setDestroyCover(true) : setDestroyCover(false) }, 1000);
+    if (landing) setTimeout(() => { coverContent.current.style.display = "none" ? setDestroyCover(true) : setDestroyCover(false) }, 750);
   }, [landing])
   
   return (
@@ -75,7 +75,7 @@ const CoverContainer = () => {
       >
         <CoverWrap onClick={()=>{setLanding(true)}}>
           <motion.div 
-          transition={{ type: 'spring', stiffness: 10, repeat: Infinity }}
+          transition={{ type: 'spring', stiffness: 15, repeat: Infinity }}
           whileHover={{ opacity: 0 }}
           ><SmallLogo/></motion.div>
         </CoverWrap>

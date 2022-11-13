@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 import NavBar from '../components/NavBar'
+import NavBody from '../components/NavBody'
 import SmallLogo from '../components/SmallLogo'
 
 const Section = styled(motion.section)`
@@ -15,15 +16,13 @@ const Section = styled(motion.section)`
     left: 0;
     right: 0;
     min-height: 10em;
-    overflow-x: hidden;
-    overflow-y: visible;
+    overflow: visible;
     background-color: transparent;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 10;
-    overflow: hidden;
     padding: 0 30px;
+    z-index: 3;
 `
 
 const Stickies = () => {
@@ -35,23 +34,39 @@ const Stickies = () => {
 
       setTimeout(() => {
         setDisplay("initial");
-      }, 1000);
+      }, 750);
 
     }
   }, [landing])
   
   return (
     <>
+
       { !landing ? <></> :  
       (landing && !logoViewState) ? 
-      <Section >      
-        <motion.div ref={motionLogo} style={{display:display}} initial={{scale:1, opacity: 1}} animate={{scale:0, opacity:0}} transition={{duration:.175}}><SmallLogo /></motion.div>
-        <section style={{minHeight: "10em", display:display}}><NavBar /></section>
+      <Section >
+        <NavBody />      
+        <motion.div 
+          ref={motionLogo} 
+          style={{display:display, zIndex:10}} 
+          initial={{scale:1, opacity: 1}} 
+          animate={{scale:0, opacity:0}} 
+          transition={{duration:.175}}>
+            <SmallLogo />
+        </motion.div>
+        <section style={{minHeight: "10em", display:display, zIndex:10}}><NavBar /></section>
       </Section> : 
-      <Section >      
-        <motion.div initial={{scale:0, opacity:0}} animate={{scale:1, opacity: 1}} transition={{duration:.175}}> <Link to="/"><SmallLogo /></Link></motion.div>
-        <section style={{minHeight: "10em", display:display}}><NavBar /></section>
+      <Section >
+        <NavBody />  
+        <motion.div 
+          initial={{scale:0, opacity:0}} 
+          animate={{scale:1, opacity: 1}} 
+          transition={{duration:.175}}> 
+            <Link to="/"><SmallLogo /></Link>
+        </motion.div>
+        <section style={{minHeight: "10em", display:display, zIndex:10}}><NavBar /></section>
       </Section> }
+
     </>
   )
 }
