@@ -9,7 +9,7 @@ const NavLayer = styled(motion.section)`
   width: 100vw;
   height: 100vh;
   z-index: 3;
-  background-color: ${props => props.theme.pruple};
+  background-color: ${props => props.theme.purple};
   right: -100%;
   opacity: 0;
 `
@@ -22,6 +22,7 @@ const NavBody = () => {
       initial={`right : -`+window.innerWidth} 
       animate={navopen ? {right:0, opacity: 1} : {opacity:0}} 
       transition={{type: "spring", bounce: 0.25, mass: 1}}>
+        
     </NavLayer> 
     </>
   )

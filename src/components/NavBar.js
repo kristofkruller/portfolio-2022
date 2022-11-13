@@ -19,7 +19,7 @@ const Hamburger = styled(motion.nav)`
   #menu_button {
     position: relative;
   
-    width: 80px;
+    width: 92px;
     height: 30px;
 
     overflow: hidden;

@@ -3,8 +3,10 @@ export const dark = {
     navHeightMobile: '100vh',
 
     dark: '#160D1C',
+    darkRgb:'22, 13, 28',
     white: '#E6E6E6',
-    pruple: '#8347AE',
+    purple: '#8347AE',
+    purpleRgb: '131, 71, 174',
 
     fontxs: '0.75em', //1em = 16px
     fontsm: '0.85em',

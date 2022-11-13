@@ -12,10 +12,10 @@ import {StateContextProvider} from "./components/StateContext";
 import { ThemeProvider } from 'styled-components';
 import { AnimatePresence } from 'framer-motion';
 import Services from "./sections/Services";
+import SmoothScroll from "./sections/SmoothScroll";
 
 function App() {
 
-  const containerRef = useRef(null);
   const stickyRef = useRef("stickyHeader");
   return (
     <>
@@ -25,11 +25,11 @@ function App() {
           <AnimatePresence>
             <StateContextProvider>
               <Stickies key={stickyRef}/>
-
-              <main>
+            {/*custom smooth scroll*/} 
+             <SmoothScroll>
                 <Home />
                 <Services />
-              </main>
+              </SmoothScroll>
 
             </StateContextProvider>
           </AnimatePresence>            

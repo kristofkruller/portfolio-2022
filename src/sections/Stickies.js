@@ -59,6 +59,7 @@ const Stickies = () => {
       <Section >
         <NavBody />  
         <motion.div 
+          style={{zIndex:10}} 
           initial={{scale:0, opacity:0}} 
           animate={{scale:1, opacity: 1}} 
           transition={{duration:.175}}> 

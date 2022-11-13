@@ -17,9 +17,35 @@ const GlobalStyles = createGlobalStyle`
     }
     h1 {
         font-family: 'Sora', sans-serif;
+        font-weight: 300;
+        letter-spacing: .3em;
+        text-transform: uppercase;
+        font-size: 5em;
     }
     body {
         overflow-x: hidden;
+
+        //for smoothScroll
+        overscroll-behavior-y: none;
+        user-select: none;
+
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+
+
+        &::-webkit-scrollbar-track {
+            background-color: transparent;
+        }
+
+        &::-webkit-scrollbar {
+            width: 0;
+            background-color: transparent;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: transparent;
+        }
     }
 ` 
 
