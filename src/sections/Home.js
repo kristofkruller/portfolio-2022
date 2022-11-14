@@ -43,7 +43,7 @@ const Layer = styled.div`
   width: inherit;
   height: inherit;
   z-index: 2;
-  background: linear-gradient(to top, rgba(22,13,28,1) 2%, rgba(${props => props.theme.darkRgb},.6), rgba(${props => props.theme.darkRgb},.85)); /*160D1C*/
+  background: linear-gradient(to top, rgba(22,13,28,1) 2%, rgba(${props => props.theme.darkRgb},.6)); /*160D1C*/
 `
 const Home = () => {
   const { landing, setLogoViewState } = useStateContext();

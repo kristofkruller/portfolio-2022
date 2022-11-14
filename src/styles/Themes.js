@@ -5,6 +5,7 @@ export const dark = {
     dark: '#160D1C',
     darkRgb:'22, 13, 28',
     white: '#E6E6E6',
+    whiteRgb: '230, 230, 230',
     purple: '#8347AE',
     purpleRgb: '131, 71, 174',
 

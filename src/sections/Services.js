@@ -18,7 +18,9 @@ const Services = () => {
 
     return (
         <>{ landing ? 
-            <ServicesWrap>    <h1 id="ServicesTitle">Services</h1>     </ServicesWrap>
+            <ServicesWrap>    
+                <h1 id="ServicesTitle">Services</h1>     
+            </ServicesWrap>
         : <></> } </>
     )
 }

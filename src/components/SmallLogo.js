@@ -14,7 +14,7 @@ const SvgWrapper = styled.section`
     }
     transition: all ease-in-out .4s;
 `
-const pathVar = {
+export const pathVar = {
     hid:{ pathLength: 0, fillOpacity: 0 },
     show:{ pathLength: 1, fillOpacity: 1,
         transition:{
