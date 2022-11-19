@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
-import React from 'react'
+import React, {useEffect} from 'react'
 import styled from 'styled-components'
+import { contentProv } from '../App'
 import { useStateContext } from '../components/StateContext'
 
 const ServicesWrap = styled.section`
@@ -13,13 +14,19 @@ const ServicesWrap = styled.section`
     &, & * { color: ${props => props.theme.white}; }
 `
 
-const Services = () => {
-    const { landing } = useStateContext();
-
+const Services = (props) => {
+    const { landing, language } = useStateContext();
+    const content = contentProv(props,"Services",language)
+      
     return (
         <>{ landing ? 
             <ServicesWrap>    
-                <h1 id="ServicesTitle">Services</h1>     
+                <h1 id="ServicesTitle">{content.Content[0]}</h1>
+                <div id="Content">
+                    <h2>{content.Content[1]}</h2>
+                    <div>{content.Content[2]}</div>
+                    <button>{content.Content[3]}</button>
+                </div> 
             </ServicesWrap>
         : <></> } </>
     )

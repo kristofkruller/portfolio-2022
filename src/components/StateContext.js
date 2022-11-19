@@ -10,10 +10,11 @@ export const StateContextProvider = ({ children }) => {
     const [logoViewState, setLogoViewState] = useState(false);
     const [display, setDisplay] = useState("none");
     const [navopen, setNavOpen] = useState(false);
+    const [language, setLang] = useState("ENG");
 
     return (
       <StateContext.Provider value={{
-        landing, setLanding, destroyCover, setDestroyCover, logoViewState, setLogoViewState, display, setDisplay, navopen, setNavOpen
+        landing, setLanding, destroyCover, setDestroyCover, logoViewState, setLogoViewState, display, setDisplay, navopen, setNavOpen, language, setLang
       }}>
         {children}
       </StateContext.Provider>

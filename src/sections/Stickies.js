@@ -25,7 +25,7 @@ const Section = styled(motion.section)`
     z-index: 3;
 `
 
-const Stickies = () => {
+const Stickies = (props) => {
   const { landing, logoViewState, display, setDisplay } = useStateContext();
   const motionLogo = useRef("motionLogo");
 
@@ -45,7 +45,7 @@ const Stickies = () => {
       { !landing ? <></> :  
       (landing && !logoViewState) ? 
       <Section >
-        <NavBody />      
+        <NavBody data={props.data} />      
         <motion.div 
           ref={motionLogo} 
           style={{display:display, zIndex:10}} 
@@ -57,7 +57,7 @@ const Stickies = () => {
         <section style={{minHeight: "10em", display:display, zIndex:10}}><NavBar /></section>
       </Section> : 
       <Section >
-        <NavBody />  
+        <NavBody  data={props.data} />  
         <motion.div 
           style={{zIndex:10}} 
           initial={{scale:0, opacity:0}} 

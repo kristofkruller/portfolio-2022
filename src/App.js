@@ -14,6 +14,15 @@ import { AnimatePresence } from 'framer-motion';
 import Services from "./sections/Services";
 import SmoothScroll from "./sections/SmoothScroll";
 
+import contentData from "./assets/Content.json"
+
+export const contentProv = (props, section, language) => {
+  // for example: contentProv(props,"Services","HU"), flat important couse of empty arrays, find to search in flattened object
+  const table = props.data.filter(e => e.id.indexOf(section) !== -1)
+  const lang = table.map(e => e.Content.filter(e => e.id.indexOf(language) !== -1))
+  return lang.flat().find(e => e.id === language);
+}
+
 function App() {
 
   const stickyRef = useRef("stickyHeader");
@@ -24,11 +33,11 @@ function App() {
 
           <AnimatePresence>
             <StateContextProvider>
-              <Stickies key={stickyRef}/>
+              <Stickies key={stickyRef} data={contentData}/>
             {/*custom smooth scroll*/} 
              <SmoothScroll>
                 <Home />
-                <Services />
+                <Services data={contentData} />
               </SmoothScroll>
 
             </StateContextProvider>

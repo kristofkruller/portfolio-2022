@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import styled from 'styled-components'
 import { useStateContext } from './StateContext'
+import { contentProv } from '../App'
 
 const NavLayer = styled(motion.section)`
   position: absolute;
@@ -47,7 +48,10 @@ const NavHolder = styled(motion.ul)`
     text-transform: uppercase;
     margin-left: 1em;
     cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
 
+
+    
     --b: 0.05em;   /* the thickness of the line */
     --c: #FC89AC; /* the color */
     
@@ -60,8 +64,9 @@ const NavHolder = styled(motion.ul)`
 
     -webkit-background-clip: text,padding-box;
 
-    background-clip: text,padding-box;
     transition: .3s var(--_s,0s) linear,background-size .3s calc(.3s - var(--_s,0s));
+
+    background-clip: text,padding-box;
 
     padding: .25em 0;
 
@@ -70,13 +75,19 @@ const NavHolder = styled(motion.ul)`
     --_p: 100%;
     --_s: .3s;
     color: #FC89AC;
+
   }
   li:first-of-type {
     border: none;
   }
 `
-const NavBody = () => {
-  const { navopen } = useStateContext()
+const NavBody = (props) => {
+  const { navopen, language } = useStateContext();
+  const content = contentProv(props, "Nav", language);
+  useEffect(() => {
+    console.log(content)
+  }, [])
+
   return (
     <>
     <NavLayer 
@@ -100,10 +111,10 @@ const NavBody = () => {
           </motion.p>
         </NameCard>
         <NavHolder id='navHolder' initial={{backgroundColor:"#160D1C"}} animate={{backgroundColor: "#8347AE"}} transition= {{duration: 10, yoyo: Infinity, ease: "easeInOut"}}>
-          <motion.li initial={{opacity:0, x:'-100%'}} animate={{opacity:1, x:0}} transition={{delay:.25, duration:.45, type: "spring", bounce: 0.25, mass:1.4}}>services</motion.li>
-          <motion.li initial={{opacity:0, x:'-100%'}} animate={{opacity:1, x:0}} transition={{delay:.5, duration:.45, type: "spring", bounce: 0.25, mass:1.4}}>portfolio</motion.li>
-          <motion.li initial={{opacity:0, x:'-100%'}} animate={{opacity:1, x:0}} transition={{delay:.75, duration:.45, type: "spring", bounce: 0.25, mass:1.4}}>about</motion.li>
-          <motion.li initial={{opacity:0, x:'-100%'}} animate={{opacity:1, x:0}} transition={{delay:1, duration:.45, type: "spring", bounce: 0.25, mass:1.4}}>contact</motion.li>
+          <motion.div initial={{opacity:0, x:'-100%'}} animate={{opacity:1, x:0}} transition={{delay:.25, duration:.45, type: "spring", bounce: 0.25, mass:1.4}}><li>{content.Content[0]}</li></motion.div>
+          <motion.div initial={{opacity:0, x:'-100%'}} animate={{opacity:1, x:0}} transition={{delay:.5, duration:.45, type: "spring", bounce: 0.25, mass:1.4}}><li>{content.Content[1]}</li></motion.div>
+          <motion.div initial={{opacity:0, x:'-100%'}} animate={{opacity:1, x:0}} transition={{delay:.75, duration:.45, type: "spring", bounce: 0.25, mass:1.4}}><li>{content.Content[2]}</li></motion.div>
+          <motion.div initial={{opacity:0, x:'-100%'}} animate={{opacity:1, x:0}} transition={{delay:1, duration:.45, type: "spring", bounce: 0.25, mass:1.4}}><li>{content.Content[3]}</li></motion.div>
         </NavHolder> 
         </>
         : <></>}    

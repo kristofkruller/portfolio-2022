@@ -1,9 +1,0 @@
-        {/* <Marquee
-        variants={marqueeVariants}
-        animate="animate"
-        ><h2>
-          Design Development UI UX web Design Development UI UX web
-          Design Development UI UX web Design Development UI UX web
-          Design Development UI UX web Design Development UI UX web
-          Design Development UI UX web Design Development UI UX web
-          </h2></Marquee> */}

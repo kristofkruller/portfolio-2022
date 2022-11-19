@@ -24,6 +24,19 @@ const Section = styled.section`
     top: 0; right: 0; left: 0; bottom: 0;
     height: 60vh;
   }
+  button {
+    position: absolute;
+    bottom: 20px; right: 44px;
+    border: 1px solid ${props => props.theme.white};
+    color: ${props => props.theme.white};
+    font-size: ${props => props.theme.fontxs};
+    background-color: transparent;
+    z-index: 3;
+    cursor: pointer;
+    padding: 10px;
+
+    transition: all .2s ease-in-out;
+  }
 `
 const VidWrap = styled.div`
   position: relative;
@@ -46,24 +59,43 @@ const Layer = styled.div`
   background: linear-gradient(to top, rgba(22,13,28,1) 2%, rgba(${props => props.theme.darkRgb},.6)); /*160D1C*/
 `
 const Home = () => {
-  const { landing, setLogoViewState } = useStateContext();
+  const { landing, setLogoViewState, language, setLang } = useStateContext();
 
   const viewId = useRef("onView");
   const isInView = useInView(viewId);
+
+  const langSetter = () => {
+
+    setLang("ENG");
+
+    if (language !== "HU") {
+      setLang("HU")
+    } else if (language !== "ENG") {
+      setLang("ENG")
+    }
+
+  }
+
   useEffect(() => {
-    !isInView ? setLogoViewState(true) : setLogoViewState(false)
+    !isInView ? setLogoViewState(true) : setLogoViewState(false);
   }, [isInView])
 
   return (
     <Section>
       <CoverContainer id='coverSection'/>
-      <motion.div id='viewDiv' ref={viewId}><Logo /></motion.div>
+      <motion.div id='viewDiv' ref={viewId}>
+        <Logo />
+      </motion.div>
       { landing ? 
-        <VidWrap>
-          <Layer />
-          <motion.video src={kruboVid} type='video/mp4' autoPlay muted loop  initial={{opacity:0}} animate={{opacity:1}} transition={{duration:10}} />
-        </VidWrap> 
+        <>
+          <VidWrap>
+            <Layer />
+            <motion.video src={kruboVid} type='video/mp4' autoPlay muted loop  initial={{opacity:0}} animate={{opacity:1}} transition={{duration:10}} />
+          </VidWrap> 
+        </>
       : null }
+      <button style={isInView ? {opacity:1} : {opacity:0}} onClick={langSetter}>{language}</button> : <></>
+
     </Section>
   )
 }

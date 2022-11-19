@@ -1,0 +1,28 @@
+[   
+    {
+        "id": "Nav",
+        "Content": [
+            {
+                "id": "ENG",
+                "Content": ["Services", "Portfolio", "About", "Contact"]
+            },
+            {
+                "id": "HU",
+                "Content": ["Szolgáltatások", "Portfolió", "Rólunk", "Kapcsolat"]
+            }
+        ]
+    },
+    {
+        "id": "Services",
+        "Content": [
+            {
+                "id":"ENG",
+                "Content":["Services","Development","Laudem singulis omittantur sea te, libris invenire ne sea. Meis ceteros usu no, eos quaestio partiendo cu. In officiis pertinax euripidis eum. Ut magna fabulas has.","More"]
+            },
+            {
+                "id":"HU",
+                "Content":["Szolgáltatásaink","Fejlesztés","Laudem singulis omittantur sea te, libris invenire ne sea. Meis ceteros usu no, eos quaestio partiendo cu. In officiis pertinax euripidis eum. Ut magna fabulas has.","Érdekel"]
+            }
+        ]
+    }
+]
