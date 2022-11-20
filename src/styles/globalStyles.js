@@ -24,7 +24,14 @@ const GlobalStyles = createGlobalStyle`
         text-transform: uppercase;
         font-size: 5em;
     }
-
+    h2 {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 900;
+        font-size: 40px;
+        line-height: 49px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+    }
     body {
         overflow-x: hidden;
 
