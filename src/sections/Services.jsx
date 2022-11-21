@@ -1,5 +1,7 @@
-import { motion } from 'framer-motion'
-import React, {useEffect} from 'react'
+import { motion, 
+    // useMotionValue 
+} from 'framer-motion'
+import React, {useRef} from 'react'
 import styled from 'styled-components'
 import { contentProv } from '../App'
 import { useStateContext } from '../components/StateContext'
@@ -24,6 +26,12 @@ const ServicesWrap = styled.section`
         align-items: center;
     }
     .horizontalScroller {
+        /*grab based scroller version*/
+        /* display: flex;
+        width: 300%;
+        overflow-x: auto; */
+
+        /*gird based scroller version*/
         display: grid;
         gap: 20px;
         grid-auto-flow: column;
@@ -47,11 +55,10 @@ const ServicesWrap = styled.section`
     }
 
 `
-const ServicesBox = styled.article`
+const ServicesBox = styled(motion.article)`
     height: 100%;
     width: 100%;
     overflow: hidden;
-
     display: flex;
 
     #content {
@@ -82,21 +89,30 @@ const ServicesBox = styled.article`
     }
     #illustration {
         width: 50%;
+        background-color: pink;
     }
 `
 
 const Services = (props) => {
     const { landing, language } = useStateContext();
     const content = contentProv(props,"Services",language)
-      
+    // const scrollX = useMotionValue(0);
+    // const scale = useTransform(scrollX, [0, 100], [0, 1]);
+    const ref = useRef(null)
     return (
         <>{ landing ? 
             <ServicesWrap>
                 <h1>{content.Title}</h1>
-                <div className='overflow'> 
-                <div className='horizontalScroller'>
-                     
-                    <ServicesBox>    
+                <motion.div className='overflow' ref={ref}> 
+                <motion.div whileTap={{ cursor: "grabbing" }} 
+                className='horizontalScroller'
+                
+                // grab based scrolling version
+
+                // drag="x"
+                // dragConstraints={ref} style={{x: scrollX, cursor: "grab"}} 
+                >
+                    <ServicesBox>  
                         <div id="content">
                             <h2>{content.Content1[0]}</h2>
                             <div>{content.Content1[1]}</div>
@@ -120,8 +136,8 @@ const Services = (props) => {
                         </div>
                         <div id="illustration"></div>
                     </ServicesBox>
-                    </div> 
-                </div>
+                    </motion.div> 
+                </motion.div>
             </ServicesWrap>
         : <></> } </>
     )
