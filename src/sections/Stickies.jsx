@@ -23,6 +23,10 @@ const Section = styled(motion.section)`
     align-items: center;
     padding: 0 30px;
     z-index: 3;
+
+    & > div {
+      z-index: 10;
+    }
 `
 
 const Stickies = (props) => {
@@ -33,7 +37,7 @@ const Stickies = (props) => {
     if (motionLogo.current.style !== undefined) {
 
       setTimeout(() => {
-        setDisplay("initial");
+        setDisplay("block"); //display for delayed nav menu
       }, 750);
 
     }
@@ -43,30 +47,42 @@ const Stickies = (props) => {
     <>
 
       { !landing ? <></> :  
-      (landing && !logoViewState) ? 
+
+      (landing && !logoViewState) ? // if landing logo not in view logoViewState true
+
       <Section >
         <NavBody data={props.data} />      
-        <motion.div 
+
+        <motion.div // initial val because of scrolling up and down 
           ref={motionLogo} 
-          style={{display:display, zIndex:10}} 
-          initial={{scale:1, opacity: 1}} 
-          animate={{scale:0, opacity:0}} 
+          initial={{scale:0, opacity:0}} 
           transition={{duration:.175}}>
-            <SmallLogo />
+
+          <SmallLogo />
+
         </motion.div>
+
         <section style={{minHeight: "10em", display:display, zIndex:10}}><NavBar /></section>
-      </Section> : 
+      </Section> 
+      
+      : 
+
       <Section >
         <NavBody  data={props.data} />  
+
         <motion.div 
-          style={{zIndex:10}} 
           initial={{scale:0, opacity:0}} 
           animate={{scale:1, opacity: 1}} 
           transition={{duration:.175}}> 
-            <Link to="/"><SmallLogo /></Link>
+
+          <Link to="/"><SmallLogo /></Link>
+
         </motion.div>
+
         <section style={{minHeight: "10em", display:display, zIndex:10}}><NavBar /></section>
-      </Section> }
+      </Section> 
+      
+      }
 
     </>
   )

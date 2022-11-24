@@ -2,7 +2,6 @@ import React, { useRef, useEffect } from 'react'
 import { useStateContext } from '../components/StateContext'
 
 import styled from 'styled-components'
-import CoverContainer from '../components/Cover'
 import Logo from '../components/Logo'
 import kruboVid from '../assets/KRUBO-slow.mp4'
 
@@ -59,7 +58,8 @@ const Layer = styled.div`
   background: linear-gradient(to top, rgba(22,13,28,1) 2%, rgba(${props => props.theme.darkRgb},.6)); /*160D1C*/
 `
 const Home = () => {
-  const { landing, setLogoViewState, language, setLang } = useStateContext();
+
+  const { setLogoViewState, language, setLang } = useStateContext();
 
   const viewId = useRef("onView");
   const isInView = useInView(viewId);
@@ -82,18 +82,16 @@ const Home = () => {
 
   return (
     <Section>
-      <CoverContainer id='coverSection'/>
+
       <motion.div id='viewDiv' ref={viewId}>
         <Logo />
       </motion.div>
-      { landing ? 
-        <>
-          <VidWrap>
-            <Layer />
-            <motion.video src={kruboVid} type='video/mp4' autoPlay muted loop  initial={{opacity:0}} animate={{opacity:1}} transition={{duration:10}} />
-          </VidWrap> 
-        </>
-      : null }
+
+      <VidWrap>
+        <Layer />
+        <motion.video src={kruboVid} type='video/mp4' autoPlay muted loop  initial={{opacity:0}} animate={{opacity:1}} transition={{duration:10}} />
+      </VidWrap>
+
       <button style={isInView ? {opacity:1} : {opacity:0}} onClick={langSetter}>{language}</button> : <></>
 
     </Section>

@@ -14,7 +14,7 @@ const SvgWrapper = styled.section`
     }
     transition: all ease-in-out .4s;
 `
-export const pathVar = {
+export const pathVar = { // for border & welcome logo anim
     hid:{ pathLength: 0, fillOpacity: 0 },
     show:{ pathLength: 1, fillOpacity: 1,
         transition:{
@@ -23,7 +23,7 @@ export const pathVar = {
         }
     }
 }
-const opacVar = {
+const opacVar = { // for border & left top logo anim
     hid:{ fillOpacity: 0 },
     show:{ fillOpacity: 1,
         transition:{
@@ -34,7 +34,7 @@ const opacVar = {
 }
 const SmallLogo = () => {
 
-    const { landing } = useStateContext();
+    const { landing } = useStateContext(); // landing state for switching anim mode 
 
     return (
         <SvgWrapper>

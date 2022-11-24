@@ -52,7 +52,8 @@ const SmoothScroll = ({ children }) => {
             left: 0,
             width: "100%",
             overflow: "hidden",
-            willChange: "transform" 
+            willChange: "transform",
+            backgroundColor: "#160D1C"
         }}
         className="scroll-container"
       >

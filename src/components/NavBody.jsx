@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { motion } from 'framer-motion'
 import styled from 'styled-components'
 import { useStateContext } from './StateContext'
@@ -84,9 +84,6 @@ const NavHolder = styled(motion.ul)`
 const NavBody = (props) => {
   const { navopen, language } = useStateContext();
   const content = contentProv(props, "Nav", language);
-  useEffect(() => {
-    console.log(content)
-  }, [])
 
   return (
     <>

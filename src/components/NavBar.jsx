@@ -138,6 +138,9 @@ const Hamburger = styled(motion.nav)`
   &.opened #menu_text_bar::before {
     content: "";
   }
+  &.opened:hover {
+    animation: hoverWhileOpen 1.3s ease infinite;
+  }
   @keyframes openLeftRot {
     0% {
       transform: rotate(0);
@@ -192,6 +195,23 @@ const Hamburger = styled(motion.nav)`
     }
     100% {
       transform: scale(0);
+    }
+  }
+  @keyframes hoverWhileOpen {
+    0% {
+      transform: scale(1);
+    } 
+    25% {
+      transform: scale(1.2);
+    }
+    40% {
+      transform: scale(1);
+    }
+    60% {
+      transform: scale(1.4);
+    }
+    100% {
+      transform: scale(1);
     }
   }
 `

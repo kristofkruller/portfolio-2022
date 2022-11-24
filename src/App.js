@@ -13,8 +13,10 @@ import { ThemeProvider } from 'styled-components';
 import { AnimatePresence } from 'framer-motion';
 import Services from "./sections/Services";
 import SmoothScroll from "./sections/SmoothScroll";
-
 import contentData from "./assets/Content.json"
+import Portfolio from "./sections/Portfolio";
+import CoverContainer from "./components/Cover";
+import ContentSections from "./sections/ContentSections";
 
 export const contentProv = (props, section, language) => {
   // for example: contentProv(props,"Services","HU"), flat important because of empty arrays, find to search in flattened object
@@ -36,8 +38,8 @@ function App() {
               <Stickies key={stickyRef} data={contentData}/>
             {/*custom smooth scroll*/} 
               <SmoothScroll>
-                <Home />
-                <Services data={contentData} />
+                <CoverContainer id='coverSection'/>
+                <ContentSections data={contentData} />
               </SmoothScroll>
 
             </StateContextProvider>

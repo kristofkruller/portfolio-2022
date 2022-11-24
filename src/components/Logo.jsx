@@ -24,11 +24,11 @@ const LogoWrap = styled(motion.section)`
 `
 
 const Logo = () => {
-  const { landing, logoViewState } = useStateContext();
+  const { logoViewState } = useStateContext();
 
   return (
       <>
-            {landing && !logoViewState ? 
+            {!logoViewState ? 
                   <LogoWrap id="logoWrap">
                         <motion.svg initial={{ scale:0.75, opacity:0 }} whileInView={{ scale:1, opacity:1 }} transition={{duration:1.75}}
                         width="594" height="168" viewBox="0 0 594 168" fill="none" xmlns="http://www.w3.org/2000/svg">

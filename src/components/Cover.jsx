@@ -26,46 +26,13 @@ const hidOnClickVar = {
   }
 }
 
-// const Marquee = styled(motion.section)`
-//   position: absolute;
-//   top: 0;
-//   width: 100vw;
-//   max-width: 100%;
-
-//   h2 {
-//     position: absolute;
-//     will-change: transform;
-//     overflow: hidden;
-//     background: ${props => `rgba(${props.theme.sailorRgba},.7)`};
-//     margin: 0 auto;
-//     white-space: nowrap;
-
-//     text-transform: uppercase;
-//     font-size: ${props => props.theme.fontxxl};
-//     font-weight: 600;
-//     color: ${props => `rgb(${props.theme.mintRgba})`};
-//   }
-// `
-// const marqueeVariants = {
-//   animate: {
-//     x: [0, -1035],
-//     transition: {
-//       x: {
-//         repeat: Infinity,
-//         repeatType: "loop",
-//         duration: 5,
-//         ease: "linear",
-//       },
-//     },
-//   },
-// };
 const CoverContainer = () => {
 
   const { landing, setLanding, destroyCover, setDestroyCover } = useStateContext();
   const coverContent = useRef("coverContent");
 
   useEffect(() => {
-    if (landing) setTimeout(() => { coverContent.current.style.display = "none" ? setDestroyCover(true) : setDestroyCover(false) }, 750);
+    if (landing) setTimeout(() => { coverContent.current.style.display = "none" ? setDestroyCover(true) : setDestroyCover(false) }, 450);
   }, [landing])
   
   return (
@@ -75,6 +42,7 @@ const CoverContainer = () => {
       >
         <CoverWrap onClick={()=>{setLanding(true)}}>
           <motion.div 
+          style={{backgroundColor: `${props => props.theme.dark}`}}
           transition={{ type: 'spring', stiffness: 15, repeat: Infinity }}
           whileHover={{ opacity: 0 }}
           ><SmallLogo/></motion.div>

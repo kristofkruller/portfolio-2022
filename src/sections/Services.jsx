@@ -1,7 +1,8 @@
-import { motion, 
+import { motion, useInView, 
     // useMotionValue 
 } from 'framer-motion'
-import React, {useRef} from 'react'
+import React, {useRef, useLayoutEffect} from 'react'
+import { useState } from 'react'
 import styled from 'styled-components'
 import { contentProv } from '../App'
 import { useStateContext } from '../components/StateContext'
@@ -33,7 +34,6 @@ const ServicesWrap = styled.section`
 
         /*gird based scroller version*/
         display: grid;
-        gap: 20px;
         grid-auto-flow: column;
         grid-auto-columns: 100%;
         overflow-x: auto;
@@ -50,8 +50,8 @@ const ServicesWrap = styled.section`
         }
     }
     .overflow {
-        max-width: calc(100% - 350px); 
-        overflow: hidden;
+        /* max-width: calc(100% - 350px); 
+        overflow: hidden; */
     }
 
 `
@@ -94,19 +94,35 @@ const ServicesBox = styled(motion.article)`
 `
 
 const Services = (props) => {
-    const { landing, language } = useStateContext();
+    const { language } = useStateContext();
     const content = contentProv(props,"Services",language)
     // const scrollX = useMotionValue(0);
     // const scale = useTransform(scrollX, [0, 100], [0, 1]);
-    const ref = useRef(null)
+
+    const refScroll = useRef(null)
+    const isInView = useInView(refScroll);
+
+    useLayoutEffect(() => {
+        const element = refScroll.current;
+        const topPos = element.getBoundingClientRect().top
+        const divHeight = element.offsetHeight
+    
+        const onScroll = () => {
+            const scrollPos = window.scrollY + window.innerHeight
+            
+        }
+
+        window.addEventListener('scroll', onScroll)
+        return () => window.removeEventListener('scroll', onScroll)
+    }, [isInView])
+    
     return (
-        <>{ landing ? 
-            <ServicesWrap>
-                <h1>{content.Title}</h1>
-                <motion.div className='overflow' ref={ref}> 
+        <ServicesWrap>
+            <h1>{content.Title}</h1>
+            <motion.div className='overflow'>
                 <motion.div whileTap={{ cursor: "grabbing" }} 
-                className='horizontalScroller'
-                
+                className='horizontalScroller' 
+                ref={refScroll}
                 // grab based scrolling version
 
                 // drag="x"
@@ -136,10 +152,9 @@ const Services = (props) => {
                         </div>
                         <div id="illustration"></div>
                     </ServicesBox>
-                    </motion.div> 
-                </motion.div>
-            </ServicesWrap>
-        : <></> } </>
+                </motion.div> 
+            </motion.div>
+        </ServicesWrap>
     )
 }
 
