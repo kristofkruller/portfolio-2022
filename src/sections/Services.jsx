@@ -1,42 +1,41 @@
-import { motion, useInView, 
-    // useMotionValue 
+import { motion, useInView
 } from 'framer-motion'
-import React, {useRef, useLayoutEffect} from 'react'
+import React, {useRef, useEffect} from 'react'
 import { useState } from 'react'
 import styled from 'styled-components'
 import { contentProv } from '../App'
 import { useStateContext } from '../components/StateContext'
 
-const ServicesWrap = styled.section`
+const ServicesWrap = styled(motion.section)`
     &, & * { color: ${props => props.theme.white}; }
-    position: relative;
-    height: 100vh;
-    width: 100%;
-    background-color: ${props => props.theme.dark};
+    /* height: 100vh; */
 
-    display: grid;
+    background-color: ${props => props.theme.dark};
+    display: flex;
     justify-content: center;
     align-items: center;
     padding: 0 175px;
     & > h1 {
         width: 100%;
-
+        position: fixed;
+        top: 0;
+        left: 175px;
         /*sync with Stickies pos*/
         min-height: 160px;
         display: flex;
         align-items: center;
     }
     .horizontalScroller {
-        /*grab based scroller version*/
-        /* display: flex;
-        width: 300%;
-        overflow-x: auto; */
-
         /*gird based scroller version*/
-        display: grid;
+
+        position: fixed;
+        top: 35vh;
+        /* display: grid;
         grid-auto-flow: column;
-        grid-auto-columns: 100%;
-        overflow-x: auto;
+        grid-auto-columns: 100%; */
+        display: flex;
+        overflow: visible;
+        /* overflow-x: auto; */
         overscroll-behavior-inline: contain;
 
         scroll-snap-type: inline mandatory;
@@ -50,17 +49,17 @@ const ServicesWrap = styled.section`
         }
     }
     .overflow {
-        /* max-width: calc(100% - 350px); 
-        overflow: hidden; */
+        position: sticky;
+        top: 0;
+        left: 0;
+        width: 100%;
+        overflow: hidden; 
     }
 
 `
 const ServicesBox = styled(motion.article)`
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
     display: flex;
-
+    width: 100vw;
     #content {
         width: 50%;
         display: flex;
@@ -94,39 +93,47 @@ const ServicesBox = styled(motion.article)`
 `
 
 const Services = (props) => {
-    const { language } = useStateContext();
+    const { language, logoViewState } = useStateContext();
     const content = contentProv(props,"Services",language)
-    // const scrollX = useMotionValue(0);
-    // const scale = useTransform(scrollX, [0, 100], [0, 1]);
 
+    //scroll
     const refScroll = useRef(null)
-    const isInView = useInView(refScroll);
+    const refHorizontal = useRef(null)
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         const element = refScroll.current;
-        const topPos = element.getBoundingClientRect().top
-        const divHeight = element.offsetHeight
-    
-        const onScroll = () => {
+        const horizontal = refHorizontal.current;
+
+        const windowWidth = window.innerWidth;
+        const horLength = horizontal.scrollWidth;
+        const distFromTop = horizontal.offsetTop;
+        const scrollDistance = distFromTop + horLength - windowWidth;
+        
+        const onScroll = (e) => {
             const scrollPos = window.scrollY + window.innerHeight
-            
+            const scrollTop = window.pageYOffset;
+            const style = horizontal.style;
+            // scrollTop >= distFromTop && scrollTop <= scrollDistance
+            console.log(distFromTop)
+            if (logoViewState) {
+                element.style.height = horLength + "px"
+                style.transform = "translateX(-"+(scrollPos)+"px)";
+            } else {
+
+            }
         }
 
         window.addEventListener('scroll', onScroll)
         return () => window.removeEventListener('scroll', onScroll)
-    }, [isInView])
+    }, [])
     
     return (
-        <ServicesWrap>
+        <ServicesWrap initial={{opacity:0}} animate={{opacity:1}} transition={{duration:1.75}} >
             <h1>{content.Title}</h1>
-            <motion.div className='overflow'>
+            <motion.div className='overflow'ref={refScroll}>
                 <motion.div whileTap={{ cursor: "grabbing" }} 
                 className='horizontalScroller' 
-                ref={refScroll}
-                // grab based scrolling version
-
-                // drag="x"
-                // dragConstraints={ref} style={{x: scrollX, cursor: "grab"}} 
+                ref={refHorizontal}
                 >
                     <ServicesBox>  
                         <div id="content">

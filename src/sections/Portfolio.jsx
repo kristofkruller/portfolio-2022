@@ -8,7 +8,7 @@ const Portfolio = () => {
   const { language } = useStateContext();
 
   return (
-    <div style={{height: "100vh", width: "100%"}}>Portfolio</div>
+    <div style={{height: "100vh", width: "100%", backgroundColor: props => props.theme.dark}}></div>
   )
 }
 

@@ -7,16 +7,15 @@ import { useStateContext } from '../components/StateContext'
 
 const ContentSections = (props) => {
 
-    const { landing } = useStateContext();
+    const { landing, logoViewState } = useStateContext();
 
     return (
         <>  
             {landing ? 
-            <>
+            <section style={{backgroundColor: props => props.theme.dark}}>
             <Home data={props.data} />
-            <Services data={props.data} />
-            <Portfolio data={props.data} />
-            </>
+            <Portfolio data={props.data} />            
+            </section>
             : <></>}
         </>
     )

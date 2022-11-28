@@ -43,6 +43,7 @@ const GlobalStyles = createGlobalStyle`
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
 
+        background-color: #160D1C;
 
         &::-webkit-scrollbar-track {
             background-color: transparent;
