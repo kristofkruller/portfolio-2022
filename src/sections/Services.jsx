@@ -15,27 +15,14 @@ const ServicesWrap = styled(motion.section)`
     justify-content: center;
     align-items: center;
     padding: 0 175px;
-    & > h1 {
-        width: 100%;
-        position: fixed;
-        top: 0;
-        left: 175px;
-        /*sync with Stickies pos*/
-        min-height: 160px;
-        display: flex;
-        align-items: center;
-    }
+
     .horizontalScroller {
         /*gird based scroller version*/
 
         position: fixed;
         top: 35vh;
-        /* display: grid;
-        grid-auto-flow: column;
-        grid-auto-columns: 100%; */
         display: flex;
         overflow: visible;
-        /* overflow-x: auto; */
         overscroll-behavior-inline: contain;
 
         scroll-snap-type: inline mandatory;
@@ -129,7 +116,6 @@ const Services = (props) => {
     
     return (
         <ServicesWrap initial={{opacity:0}} animate={{opacity:1}} transition={{duration:1.75}} >
-            <h1>{content.Title}</h1>
             <motion.div className='overflow'ref={refScroll}>
                 <motion.div whileTap={{ cursor: "grabbing" }} 
                 className='horizontalScroller' 
