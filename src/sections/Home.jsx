@@ -9,7 +9,7 @@ import { motion, useInView } from 'framer-motion'
 
 const Section = styled.section`
   position: relative;
-  height: 100vh;
+  height: 200vh;
   overflow: hidden;
   background-color: ${props => props.theme.dark};
   svg *:not(svg rect) {

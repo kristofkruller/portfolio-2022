@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import SmallLogo from './SmallLogo';
@@ -28,7 +28,10 @@ const hidOnClickVar = {
 
 const CoverContainer = () => {
 
-  const { landing, setLanding, destroyCover, setDestroyCover } = useStateContext();
+  const { landing, setLanding } = useStateContext();
+
+  const [destroyCover, setDestroyCover] = useState(false);
+
   const coverContent = useRef("coverContent");
 
   useEffect(() => {

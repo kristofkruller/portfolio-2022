@@ -24,23 +24,24 @@ const WrapR = styled.section`
     }
 
 `
+
 const NonSmooth = (props) => {
 
-    const { logoViewState, language, landing } = useStateContext();
+    const { logoViewState, language, landing, servicesDisplay } = useStateContext();
     const content = contentProv(props,"Services",language)
 
     return (
         <WrapR>  
-            {landing ?
-            <>
+
                 <motion.h1 
                 initial={{top: "-180px"}} 
-                animate={logoViewState ? {top: 0, opacity: 1} : {opacity:0}} 
-                transition={{type: "spring", bounce: .3, mass: .75}}
+                animate={logoViewState && !servicesDisplay ? {top: 0, opacity: 1} : {opacity:0}} 
+                transition={{type: "spring", bounce: .3, mass: .75, delay: 0}}
                 >{content.Title}</motion.h1>
-                {logoViewState ? <Services data={props.data} /> : <></>}
-            </> 
-            : <></>}
+                {landing ?
+                    <Services data={props.data} /> : <></> 
+                }
+
         </WrapR>
     )
 }

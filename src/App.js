@@ -38,7 +38,7 @@ function App() {
             {/*custom smooth scroll*/} 
               <SmoothScroll>
                 <CoverContainer id='coverSection'/>
-                <ContentSections data={contentData} />
+                <ContentSections id='contentSections' data={contentData} />
               </SmoothScroll>
               <NonSmooth data={contentData}/>
 

@@ -6,15 +6,15 @@ export const StateContext = createContext();
 export const StateContextProvider = ({ children }) => {
 
     const [landing, setLanding] = useState(false);
-    const [destroyCover, setDestroyCover] = useState(false);
     const [logoViewState, setLogoViewState] = useState(false);
-    const [display, setDisplay] = useState("none");
     const [navopen, setNavOpen] = useState(false);
     const [language, setLang] = useState("ENG");
+    const [servicesDisplay, setServices] = useState(false); //for services scroll handeling
+
 
     return (
       <StateContext.Provider value={{
-        landing, setLanding, destroyCover, setDestroyCover, logoViewState, setLogoViewState, display, setDisplay, navopen, setNavOpen, language, setLang
+        landing, setLanding, logoViewState, setLogoViewState, navopen, setNavOpen, language, setLang, servicesDisplay, setServices
       }}>
         {children}
       </StateContext.Provider>

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useStateContext } from '../components/StateContext'
 
 import { motion } from 'framer-motion'
@@ -30,10 +30,12 @@ const Section = styled(motion.section)`
 `
 
 const Stickies = (props) => {
-  const { landing, logoViewState, display, setDisplay } = useStateContext();
+  const { landing, logoViewState } = useStateContext();
   const motionLogo = useRef("motionLogo");
+  const [display, setDisplay] = useState("none");
 
   useEffect(() => {
+
     if (motionLogo.current.style !== undefined) {
 
       setTimeout(() => {
