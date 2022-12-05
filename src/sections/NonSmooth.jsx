@@ -15,9 +15,7 @@ const WrapR = styled.section`
         width: 100%;
         position: fixed;
         left: 175px;
-        color: ${props => props.theme.white};
         /*sync with Stickies pos*/
-        min-height: 160px;
         display: flex;
         align-items: center;
         opacity:0;

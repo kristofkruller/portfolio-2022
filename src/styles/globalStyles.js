@@ -23,6 +23,8 @@ const GlobalStyles = createGlobalStyle`
         letter-spacing: .3em;
         text-transform: uppercase;
         font-size: 5em;
+        color: #E6E6E6;
+        min-height: 160px;
     }
     h2 {
         font-family: 'Montserrat', sans-serif;

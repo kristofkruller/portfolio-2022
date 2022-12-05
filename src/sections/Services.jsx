@@ -9,7 +9,6 @@ const ServicesWrap = styled(motion.section)`
     &, & * { color: ${props => props.theme.white}; }
 
     background-color: ${props => props.theme.dark};
-    display: flex;
     justify-content: center;
     align-items: center;
     padding: 0 175px;
@@ -101,14 +100,12 @@ const Services = (props) => {
 
                 element.style.height = horLength + "px";
 
-                setServices(false)
-
                 style.transform = "translateX(-"+(scrollPos)+"px)"
 
             }
 
             if ( scrollPos > horLength - scrollPos / 4) {
-                setServices(true);
+                setServices(true); // this sets the services section on display none and opacity 0. will be setted back by portfolio section.
             }
    
         }
@@ -120,6 +117,8 @@ const Services = (props) => {
     
     return (
         <ServicesWrap
+        id="servicesWrap"
+        style={servicesDisplay ? {display:"none"} : {display:"flex"}}
         initial={{opacity: 0}} 
         animate={logoViewState && !servicesDisplay ? {opacity: 1} : {opacity:0}}
         >
@@ -137,11 +136,11 @@ const Services = (props) => {
                     <ServicesBox style={{visibility: "hidden"}} />  
                     {/* 465.5 to 1920 */}
                     <ServicesBox >  
-                        <div id="content">
+                        <motion.div id="content" style={servicesDisplay ? {visibility:"hidden"} : {visibility:"visible"}}>
                             <h2>{content.Content1[0]}</h2>
                             <div>{content.Content1[1]}</div>
                             <button>{content.Content1[2]}</button>
-                        </div>
+                        </motion.div>
                         <motion.div id="illustration"
                             whileHover={{cursor: "grab"}}
                             whileDrag={{cursor: "grabbing"}}
@@ -157,11 +156,11 @@ const Services = (props) => {
                         </motion.div>
                     </ServicesBox>
                     <ServicesBox style={{}} >    
-                        <div id="content">
+                        <motion.div id="content" style={servicesDisplay ? {visibility:"hidden"} : {visibility:"visible"}}>
                             <h2>{content.Content2[0]}</h2>
                             <div>{content.Content2[1]}</div>
                             <button>{content.Content2[2]}</button>
-                        </div>
+                        </motion.div>
                         <motion.div id="illustration"
                             whileHover={{cursor: "grab"}}
                             whileDrag={{cursor: "grabbing"}}
@@ -177,11 +176,11 @@ const Services = (props) => {
                         </motion.div>
                     </ServicesBox>
                     <ServicesBox >    
-                        <div id="content">
+                        <motion.div id="content" style={servicesDisplay ? {visibility:"hidden"} : {visibility:"visible"}}>
                             <h2>{content.Content3[0]}</h2>
                             <div>{content.Content3[1]}</div>
                             <button>{content.Content3[2]}</button>
-                        </div>
+                        </motion.div>
                         <motion.div id="illustration"
                             whileHover={{cursor: "grab"}}
                             whileDrag={{cursor: "grabbing"}}

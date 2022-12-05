@@ -30,5 +30,24 @@
                 "Content3":["Illusztráció","Laudem singulis omittantur sea te, libris invenire ne sea. Meis ceteros usu no, eos quaestio partiendo cu. In officiis pertinax euripidis eum. Ut magna fabulas has.","Érdekel"]
             }
         ]
+    },
+    {
+        "id": "Portfolio",
+        "Primary": [
+            {
+                "id":"ENG",
+                "Title":"Portfolio",
+                "Content1":["Development","Laudem singulis omittantur sea te, libris invenire ne sea. Meis ceteros usu no, eos quaestio partiendo cu. In officiis pertinax euripidis eum. Ut magna fabulas has.","More"],
+                "Content2":["Web design","Laudem singulis omittantur sea te, libris invenire ne sea. Meis ceteros usu no, eos quaestio partiendo cu. In officiis pertinax euripidis eum. Ut magna fabulas has.","Érdekel"],
+                "Content3":["Illustration","Laudem singulis omittantur sea te, libris invenire ne sea. Meis ceteros usu no, eos quaestio partiendo cu. In officiis pertinax euripidis eum. Ut magna fabulas has.","Érdekel"]
+            },
+            {
+                "id":"HU",
+                "Title":"Portfólió",
+                "Content1":["Fejlesztés","Laudem singulis omittantur sea te, libris invenire ne sea. Meis ceteros usu no, eos quaestio partiendo cu. In officiis pertinax euripidis eum. Ut magna fabulas has.","Érdekel"],
+                "Content2":["Web design","Laudem singulis omittantur sea te, libris invenire ne sea. Meis ceteros usu no, eos quaestio partiendo cu. In officiis pertinax euripidis eum. Ut magna fabulas has.","Érdekel"],
+                "Content3":["Illusztráció","Laudem singulis omittantur sea te, libris invenire ne sea. Meis ceteros usu no, eos quaestio partiendo cu. In officiis pertinax euripidis eum. Ut magna fabulas has.","Érdekel"]
+            }
+        ]
     }
 ]
