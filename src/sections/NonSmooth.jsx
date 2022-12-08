@@ -16,8 +16,6 @@ const WrapR = styled.section`
         position: fixed;
         left: 175px;
         /*sync with Stickies pos*/
-        display: flex;
-        align-items: center;
         opacity:0;
     }
 

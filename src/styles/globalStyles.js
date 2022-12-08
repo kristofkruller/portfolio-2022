@@ -25,6 +25,8 @@ const GlobalStyles = createGlobalStyle`
         font-size: 5em;
         color: #E6E6E6;
         min-height: 160px;
+        display: flex;
+        align-items: center;
     }
     h2 {
         font-family: 'Montserrat', sans-serif;

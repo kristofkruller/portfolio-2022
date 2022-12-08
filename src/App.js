@@ -1,6 +1,5 @@
 import {useRef} from "react";
 
-import Home from './sections/Home';
 import Stickies from "./sections/Stickies";
 
 import './App.css';

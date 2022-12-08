@@ -89,25 +89,23 @@ const Services = (props) => {
         const horLength = horizontal.scrollWidth - window.innerWidth/1.3;
 
         const onScroll = () => {
+                const style = horizontal.style;
+                let scrollPos = window.scrollY + window.innerHeight;
+                const articles = horizontal.children;
 
-            const style = horizontal.style;
-            let scrollPos = window.scrollY + window.innerHeight;
-            const articles = horizontal.children;
+                if ( scrollPos < horLength - scrollPos / 4) {
+                    
+                    Object.values(articles).forEach(e => e.style.transform =`translateX(-${scrollPos / 4}px)`)
 
-            if ( scrollPos < horLength - scrollPos / 4) {
-                
-                Object.values(articles).forEach(e => e.style.transform =`translateX(-${scrollPos / 4}px)`)
+                    element.style.height = horLength + "px";
 
-                element.style.height = horLength + "px";
+                    style.transform = "translateX(-"+(scrollPos * 1)+"px)"
 
-                style.transform = "translateX(-"+(scrollPos)+"px)"
+                }
 
-            }
-
-            if ( scrollPos > horLength - scrollPos / 4) {
-                setServices(true); // this sets the services section on display none and opacity 0. will be setted back by portfolio section.
-            }
-   
+                if ( scrollPos > horLength - scrollPos / 4) {
+                    setServices(true); // this sets the services section on display none and opacity 0. will be setted back by portfolio section.
+                }
         }
 
         window.addEventListener('scroll', onScroll)

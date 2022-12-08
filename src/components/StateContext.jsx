@@ -10,11 +10,12 @@ export const StateContextProvider = ({ children }) => {
     const [navopen, setNavOpen] = useState(false);
     const [language, setLang] = useState("ENG");
     const [servicesDisplay, setServices] = useState(false); //for services scroll handeling
+    const [endOfPortfolio, setEndOf] = useState(false);
 
 
     return (
       <StateContext.Provider value={{
-        landing, setLanding, logoViewState, setLogoViewState, navopen, setNavOpen, language, setLang, servicesDisplay, setServices
+        landing, setLanding, logoViewState, setLogoViewState, navopen, setNavOpen, language, setLang, servicesDisplay, setServices, endOfPortfolio, setEndOf
       }}>
         {children}
       </StateContext.Provider>
